@@ -7,7 +7,9 @@ import { firestorePlugin } from 'vuefire'
 Vue.use(firestorePlugin)
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import VueGoogleCharts from 'vue-google-charts'
 
+Vue.use(VueGoogleCharts)
 Vue.config.productionTip = false
 Vue.use(ArgonDashboard)
 

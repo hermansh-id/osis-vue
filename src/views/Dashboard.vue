@@ -2,7 +2,7 @@
     <div>
         <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
             <!-- Card stats -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-xl-3 col-lg-6">
                     <stats-card title="Total traffic"
                                 type="gradient-red"
@@ -60,7 +60,7 @@
                         </template>
                     </stats-card>
                 </div>
-            </div>
+            </div> -->
         </base-header>
 
         <!--Charts-->
@@ -75,13 +75,11 @@
                                 <h5 class="h3 mb-0">Jumlah suara calon</h5>
                             </div>
                         </div>
-
-                        <bar-chart
-                                :height="350"
-                                ref="barChart"
-                                :chart-data="perolehan"
-                        >
-                        </bar-chart>
+  <GChart
+    type="ColumnChart"
+    :data="chartData"
+    :options="chartOptions"
+  />
                     </card>
                 </div>
                 <div class="col-xl-4">
@@ -93,12 +91,11 @@
                             </div>
                         </div>
 
-                        <doughnut-chart
-                                :height="350"
-                                ref="doughnutChart"
-                                :chart-data="perolehan"
-                        >
-                        </doughnut-chart>
+                          <GChart
+    type="PieChart"
+    :data="chartData"
+    :options="chartOptions"
+  />
                     </card>
                 </div>
             </div>
@@ -119,25 +116,52 @@
   import {db} from '../main.js';
   // Charts
   import * as chartConfigs from '@/components/Charts/config';
-  import DoughnutChart from '@/components/Charts/DoughnutChart';
-  import BarChart from '@/components/Charts/BarChart';
+  // import DoughnutChart from '@/components/Charts/DoughnutChart';
+  // import BarChart from '@/components/Charts/BarChart';
 
   // Tables
   import PageVisitsTable from './Dashboard/PageVisitsTable';
+import { GChart } from 'vue-google-charts'
 
   export default {
     components: {
-      DoughnutChart,
-      BarChart,
+      // DoughnutChart,
       PageVisitsTable,
+    GChart
     },
     firestore () {
       return {
-        perolehan: db.collection('statistik').doc('barchart')
+        perolehan: db.collection('statistik').doc('stat')
       }
     },
+    watch: {
+    perolehan: function() {
+      this.chartData[1][1] = this.perolehan['1'];
+      this.chartData[2][1] = this.perolehan['2'];
+      this.chartData[3][1] = this.perolehan['3'];
+    }
+  },
     data() {
       return {
+          pemilih: {
+            labels: ['INDRIYANI', 'FERTI', 'DEDE RIZKI'],
+            datasets: [{
+              label: 'Pemilih',
+              data:  [4,7,0]
+            }]
+        },
+         chartData: [
+        ['PEROLEHAN SUARA', 'PEMILIH'],
+        ['Indri Yani', 0],
+        ['Ferti', 0],
+        ['Dede Rizki', 0],
+      ],
+      chartOptions: {
+        chart: {
+          title: 'Company Performance',
+          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        }
+      },
         perolehan: [],
         calon: [],
         bigLineChart: {

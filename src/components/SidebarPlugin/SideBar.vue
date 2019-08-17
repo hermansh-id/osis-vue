@@ -12,7 +12,7 @@
 
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
-                    <base-dropdown class="nav-item" position="right">
+                    <!-- <base-dropdown class="nav-item" position="right">
                         <a slot="title" class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="ni ni-bell-55"></i>
@@ -22,8 +22,8 @@
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
-                    </base-dropdown>
-                    <base-dropdown class="nav-item" position="right">
+                    </base-dropdown> -->
+                    <!-- <base-dropdown class="nav-item" position="right">
                         <a slot="title" class="nav-link" href="#" role="button">
                             <div class="media align-items-center">
                               <span class="avatar avatar-sm rounded-circle">
@@ -56,7 +56,7 @@
                             <i class="ni ni-user-run"></i>
                             <span>Logout</span>
                         </a>
-                    </base-dropdown>
+                    </base-dropdown> -->
                 </ul>
             </slot>
             <slot></slot>

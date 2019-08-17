@@ -82,22 +82,30 @@
     },
     data() {
       return {
+        pemilih: {},
         tableData: [
         ],
         jumlah: null
       }
     },
     watch: {
-      tableData: function(){
+      pemilih: function(){
+
+        this.jumlah+= this.pemilih['1'];
+        this.jumlah+= this.pemilih['2'];
+        this.jumlah+= this.pemilih['3'];
         this.tableData.length !== 0 ? 
-        this.tableData.forEach(function(data){
-          this.jumlah = data.pemilih 
+        this.tableData.map(item=>{
+          item['pemilih'] = this.pemilih[item['urut']];
+          item['completion'] = Math.round(this.pemilih[item['urut']] / this.jumlah * 100);
         }) : null
+
       }
     },
     firestore () {
     return {
-      tableData: db.collection('calon')
+      tableData: db.collection('calon').orderBy('urut'),
+      pemilih: db.collection('statistik').doc('stat')
     }
   }
   }

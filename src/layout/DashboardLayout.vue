@@ -14,7 +14,7 @@
           }"
         />
         <sidebar-item :link="{name: 'Calon Ketua', icon: 'ni ni-single-02 text-yellow', path: '/calon'}"/>
-        <sidebar-item :link="{name: 'Pemilih', icon: 'ni ni-bullet-list-67 text-red', path: '/pemilih'}"/>
+        <!-- <sidebar-item :link="{name: 'Pemilih', icon: 'ni ni-bullet-list-67 text-red', path: '/pemilih'}"/> -->
 
       </template>
     </side-bar>
@@ -44,7 +44,7 @@
     },
     data() {
       return {
-        sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
+        sidebarBackground: 'orange' //vue|blue|orange|green|red|primary
       };
     },
     methods: {

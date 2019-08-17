@@ -13,9 +13,7 @@
                   :data="tableData">
         <template slot="columns">
           <th>Nama</th>
-          <th>Username</th>
           <th>PIN</th>
-          <th>Waktu</th>
         </template>
 
         <template slot-scope="{row}">
@@ -23,13 +21,7 @@
             {{row.nama}}
           </th>
           <td>
-            {{row.username}}
-          </td>
-          <td>
-            {{row.passcode}}
-          </td>
-          <td>
-            {{row.waktu}}
+            {{row.kode}}
           </td>
         </template>
 
